@@ -535,7 +535,7 @@ export default function HomeClient() {
               className="font-cinzel tracking-widest"
               style={{ fontSize: "0.6rem", color: "#C9A84C", opacity: 0.9 }}
             >
-              RETROUVE-MOI SUR
+              RETROUVE BY SEVIA EN CLIQUANT SUR LES LIENS
             </span>
             <div className="flex flex-wrap justify-center gap-2">
               {socialLinks.map((s) => (
