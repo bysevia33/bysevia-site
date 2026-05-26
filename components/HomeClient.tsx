@@ -391,7 +391,7 @@ export default function HomeClient() {
         style={{ zIndex: 3 }}
       >
         {/* ── Colonne gauche : Logo + Titre + Sous-titre ── */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1 pt-8 lg:pt-0">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1 pt-14 lg:pt-0">
           {/* Logo */}
           <motion.div
             ref={logoRef}
