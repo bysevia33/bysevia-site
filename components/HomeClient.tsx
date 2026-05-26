@@ -455,7 +455,7 @@ export default function HomeClient() {
         </div>
 
         {/* ── Colonne droite : Stats ── */}
-        <div className="flex flex-col items-center lg:items-end gap-8 flex-shrink-0">
+        <div className="flex flex-col items-center lg:items-end gap-8 flex-shrink-0 -mt-14 lg:mt-0">
           {/* Stats Counters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
