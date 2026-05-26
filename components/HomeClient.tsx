@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
-import { socialLinks, SocialIcon } from "./SocialLinks";
+import { socialLinks, SocialIcon, DeezerIcon } from "./SocialLinks";
 
 const PHRASES = [
   "Bienvenue dans les mondes féeriques de Séviah.",
@@ -556,7 +556,10 @@ export default function HomeClient() {
                     boxShadow: `0 0 8px ${s.color}22`,
                   }}
                 >
-                  <s.Icon size={18} style={{ color: s.color, filter: `drop-shadow(0 0 4px ${s.glow})`, flexShrink: 0 }} />
+                  {s.Icon
+                    ? <s.Icon size={18} style={{ color: s.color, filter: `drop-shadow(0 0 4px ${s.glow})`, flexShrink: 0 }} />
+                    : <DeezerIcon size={18} color={s.color} />
+                  }
                   <span
                     className="font-cinzel"
                     style={{ fontSize: "0.48rem", color: "#F0F4FF", letterSpacing: "0.06em", opacity: 0.9, whiteSpace: "nowrap" }}
