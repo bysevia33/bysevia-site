@@ -542,8 +542,8 @@ export default function HomeClient() {
                 <a
                   key={s.label}
                   href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={s.sameTab ? "_self" : "_blank"}
+                  rel={s.sameTab ? undefined : "noopener noreferrer"}
                   style={{
                     background: "rgba(0,180,216,0.07)",
                     border: `1px solid ${s.color}66`,

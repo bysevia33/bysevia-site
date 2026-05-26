@@ -13,6 +13,7 @@ interface SocialLinkItem {
   Icon: IconType | null;
   color: string;
   glow: string;
+  sameTab?: boolean;
 }
 
 export const socialLinks: SocialLinkItem[] = [
@@ -87,6 +88,7 @@ export const socialLinks: SocialLinkItem[] = [
     Icon: FaPalette as IconType,
     color: "#E07B39",
     glow: "rgba(224,123,57,0.55)",
+    sameTab: true,
   },
 ];
 
@@ -105,6 +107,7 @@ export function SocialIcon({
   Icon,
   color,
   glow,
+  sameTab,
   size = 28,
   showTooltip = true,
 }: SocialLinkItem & { size?: number; showTooltip?: boolean }) {
@@ -114,8 +117,8 @@ export function SocialIcon({
     <div className="relative flex flex-col items-center">
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={sameTab ? "_self" : "_blank"}
+        rel={sameTab ? undefined : "noopener noreferrer"}
         aria-label={label}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
