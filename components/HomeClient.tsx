@@ -498,7 +498,7 @@ export default function HomeClient() {
             </div>
           </motion.div>
 
-          {/* Icônes sociales — mobile uniquement */}
+          {/* Icônes sociales + boutons CTA — mobile uniquement */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -540,16 +540,36 @@ export default function HomeClient() {
                 </a>
               ))}
             </div>
+            {/* Boutons CTA — mobile, dans le flux sous les icônes */}
+            <div className="flex gap-3 mt-1">
+              <a
+                href="https://open.spotify.com/artist/2MuJgdOgJFb6K3QUWPhoG6"
+                target="_blank" rel="noopener noreferrer"
+                className="btn-glow rounded-full font-cinzel border flex items-center justify-center"
+                style={{ fontFamily: "var(--font-cinzel), serif", color: "#F0F4FF", borderColor: "rgba(0,180,216,0.5)", background: "rgba(0,180,216,0.1)", backdropFilter: "blur(10px)", fontSize: "0.6rem", letterSpacing: "0.08em", width: "90px", height: "28px" }}
+              >ÉCOUTER</a>
+              <a
+                href="https://www.youtube.com/@bysevia33"
+                target="_blank" rel="noopener noreferrer"
+                className="btn-glow rounded-full font-cinzel border flex items-center justify-center"
+                style={{ fontFamily: "var(--font-cinzel), serif", color: "#F0F4FF", borderColor: "rgba(0,180,216,0.5)", background: "rgba(0,180,216,0.1)", backdropFilter: "blur(10px)", fontSize: "0.6rem", letterSpacing: "0.08em", width: "90px", height: "28px" }}
+              >REGARDER</a>
+              <Link
+                href="/boutique"
+                className="btn-or rounded-full font-cinzel border flex items-center justify-center"
+                style={{ fontFamily: "var(--font-cinzel), serif", color: "#F0F4FF", borderColor: "rgba(201,168,76,0.5)", background: "rgba(201,168,76,0.1)", backdropFilter: "blur(10px)", fontSize: "0.6rem", letterSpacing: "0.08em", width: "90px", height: "28px" }}
+              >DÉCOUVRIR</Link>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* CTA Buttons — centrés en bas */}
+      {/* CTA Buttons — desktop uniquement, centrés en bas */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }}
-        className="flex gap-4"
+        className="hidden lg:flex gap-4"
         style={{ position: "absolute", bottom: "48px", left: 0, right: 0, marginLeft: "auto", marginRight: "auto", width: "fit-content", zIndex: 5 }}
       >
         <motion.a
