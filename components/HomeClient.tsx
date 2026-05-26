@@ -472,10 +472,10 @@ export default function HomeClient() {
             {/* TikTok */}
             <div className="flex flex-col items-center gap-1">
               <div className="flex items-center gap-2">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#00B4D8">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z" />
                 </svg>
-                <span className="text-xl font-bold glow-cyan" style={{ color: "#00B4D8" }}>
+                <span className="text-xl font-bold" style={{ color: "#ffffff" }}>
                   <AnimatedCounter target={52600} />
                 </span>
               </div>
