@@ -60,3 +60,8 @@ node_modules/
 .local/
 .nvm/
 .npm/
+.cache/
+.landscape/
+.local/
+.nvm/
+.config/

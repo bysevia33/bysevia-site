@@ -1,6 +1,0 @@
-{"debug":"Starting connection with timeout of 30000ms","timestamp":"2026-05-03T12:15:31.121Z","sessionId":"aaa07f68-5eb1-4705-9ab7-2a0842932e58","cwd":"/home/bysevia"}
-{"debug":"Successfully connected (transport: stdio) in 1988ms","timestamp":"2026-05-03T12:15:33.105Z","sessionId":"aaa07f68-5eb1-4705-9ab7-2a0842932e58","cwd":"/home/bysevia"}
-{"debug":"Connection established with capabilities: {\"hasTools\":true,\"hasPrompts\":false,\"hasResources\":false,\"hasResourceSubscribe\":false,\"serverVersion\":{\"name\":\"21st-magic\",\"version\":\"0.0.46\"}}","timestamp":"2026-05-03T12:15:33.105Z","sessionId":"aaa07f68-5eb1-4705-9ab7-2a0842932e58","cwd":"/home/bysevia"}
-{"debug":"Channel notifications skipped: server did not declare claude/channel capability","timestamp":"2026-05-03T12:15:33.114Z","sessionId":"aaa07f68-5eb1-4705-9ab7-2a0842932e58","cwd":"/home/bysevia"}
-{"debug":"Sending SIGINT to MCP server process","timestamp":"2026-05-03T13:29:45.335Z","sessionId":"aaa07f68-5eb1-4705-9ab7-2a0842932e58","cwd":"/home/bysevia"}
-{"debug":"MCP server process exited cleanly","timestamp":"2026-05-03T13:29:45.823Z","sessionId":"aaa07f68-5eb1-4705-9ab7-2a0842932e58","cwd":"/home/bysevia"}
