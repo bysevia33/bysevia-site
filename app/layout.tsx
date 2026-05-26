@@ -11,9 +11,9 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "By SevIA – Univers Féerique Bioluminescent",
+  title: "By SevIA – Créations originales, vidéos & musiques",
   description:
-    "Plongez dans l'univers magique de By SevIA : musique, personnages féeriques, NFT et peintures.",
+    "Explore les mondes de Seviah : créations visuelles, vidéos et musiques originales de By SevIA.",
 };
 
 export default function RootLayout({
