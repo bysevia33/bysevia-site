@@ -503,11 +503,43 @@ export default function HomeClient() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="lg:hidden flex flex-wrap justify-center gap-3"
+            className="lg:hidden flex flex-col items-center gap-3"
           >
-            {socialLinks.map((s) => (
-              <SocialIcon key={s.label} {...s} size={26} showTooltip />
-            ))}
+            <span
+              className="font-cinzel tracking-widest"
+              style={{ fontSize: "0.6rem", color: "#C9A84C", opacity: 0.9 }}
+            >
+              RETROUVE-MOI SUR
+            </span>
+            <div className="flex flex-wrap justify-center gap-2">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: "rgba(0,180,216,0.07)",
+                    border: `1px solid ${s.color}66`,
+                    borderRadius: "10px",
+                    padding: "6px 10px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    textDecoration: "none",
+                    boxShadow: `0 0 8px ${s.color}22`,
+                  }}
+                >
+                  <s.Icon size={18} style={{ color: s.color, filter: `drop-shadow(0 0 4px ${s.glow})`, flexShrink: 0 }} />
+                  <span
+                    className="font-cinzel"
+                    style={{ fontSize: "0.48rem", color: "#F0F4FF", letterSpacing: "0.06em", opacity: 0.9, whiteSpace: "nowrap" }}
+                  >
+                    {s.label}
+                  </span>
+                </a>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
