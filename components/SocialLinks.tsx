@@ -60,7 +60,7 @@ export const socialLinks: SocialLinkItem[] = [
   {
     label: "Deezer",
     tooltip: "By SevIA sur Deezer",
-    href: "https://link.deezer.com/s/33jBP6tcTqw0FJDqIiqX8",
+    href: "https://www.deezer.com/fr/artist/331220921",
     Icon: null,
     color: "#A238FF",
     glow: "rgba(162,56,255,0.55)",
