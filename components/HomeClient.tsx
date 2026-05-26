@@ -442,7 +442,7 @@ export default function HomeClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            style={{ position: "relative", minHeight: "9em", width: "100%", maxWidth: "480px" }}
+            style={{ position: "relative", minHeight: "13em", width: "100%", maxWidth: "480px", marginTop: "0.75rem" }}
           >
             <AnimatePresence mode="wait">
               <motion.p
