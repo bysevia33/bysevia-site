@@ -29,7 +29,7 @@ function TypewriterPhrase({ content }: { content: string }) {
     const id = setInterval(() => {
       if (i < chars.length) { i++; setCharCount(i); }
       else clearInterval(id);
-    }, 42);
+    }, 60);
     return () => clearInterval(id);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [content]);

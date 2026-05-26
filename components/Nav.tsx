@@ -49,7 +49,7 @@ export default function Nav() {
         <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 16px" }}>
 
           {/* ── DESKTOP : une seule rangée ── */}
-          <div className="hidden md:flex items-center justify-between h-14">
+          <div className="hidden lg:flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-3 flex-shrink-0">
               <Image
                 src="/LOGO BYSEVIA/LOGO BYSEVIA.PNG"
@@ -88,21 +88,21 @@ export default function Nav() {
           </div>
 
           {/* ── MOBILE : deux rangées ── */}
-          <div className="flex md:hidden flex-col">
+          <div className="flex lg:hidden flex-col">
             {/* Rangée 1 : logo + titre */}
-            <div className="flex items-center justify-center h-7">
+            <div className="flex items-center justify-center h-8">
               <Link href="/" className="flex items-center gap-2">
                 <Image
                   src="/LOGO BYSEVIA/LOGO BYSEVIA.PNG"
                   alt="By SevIA Logo"
-                  width={24}
-                  height={24}
+                  width={28}
+                  height={28}
                   className="rounded-full animate-pulse-glow"
                   unoptimized loading="eager" priority
                 />
                 <span
                   className="font-cinzel font-bold glow-cyan"
-                  style={{ fontFamily: "var(--font-cinzel), serif", color: "#F0F4FF", fontSize: "0.65rem" }}
+                  style={{ fontFamily: "var(--font-cinzel), serif", color: "#F0F4FF", fontSize: "0.75rem" }}
                 >
                   BY SevIA
                 </span>
@@ -122,9 +122,9 @@ export default function Nav() {
                   style={{
                     fontFamily: "var(--font-cinzel), serif",
                     color: "#F0F4FF",
-                    fontSize: "0.5rem",
-                    letterSpacing: "0.04em",
-                    padding: "3px 2px",
+                    fontSize: "clamp(0.55rem, 1.8vw, 0.7rem)",
+                    letterSpacing: "0.03em",
+                    padding: "4px 1px",
                   }}
                 >
                   {link.label}
