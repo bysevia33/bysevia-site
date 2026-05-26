@@ -1,0 +1,118 @@
+"use client";
+
+import { useState } from "react";
+import { socialLinks, SocialIcon } from "./SocialLinks";
+
+export default function Footer() {
+  const [cafeHovered, setCafeHovered] = useState(false);
+
+  return (
+    <footer
+      className="w-full px-4 pb-8 pt-6 text-center"
+      style={{ background: "rgba(6,10,30,0.95)" }}
+    >
+      {/* Thin cyan separator */}
+      <div
+        className="mx-auto mb-5"
+        style={{
+          height: "1px",
+          maxWidth: "480px",
+          background: "linear-gradient(to right, transparent, rgba(0,180,216,0.5), transparent)",
+        }}
+      />
+
+      {/* Social Icons */}
+      <div className="flex items-center justify-center gap-4 mb-4">
+        {socialLinks.map((s) => (
+          <SocialIcon key={s.label} {...s} size={24} showTooltip={true} />
+        ))}
+      </div>
+
+      {/* Lien café */}
+      <style>{`
+        @keyframes cafeShimmer {
+          0%   { transform: translateX(-180%) skewX(-20deg); }
+          100% { transform: translateX(500%)  skewX(-20deg); }
+        }
+      `}</style>
+      <div className="mb-5 relative inline-block">
+        <a
+          href="https://www.paypal.com/ncp/payment/9R4YGVFGKC4VQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setCafeHovered(true)}
+          onMouseLeave={() => setCafeHovered(false)}
+          className="font-cinzel inline-block transition-all duration-200 opacity-75 hover:opacity-100 hover:scale-105 hover:bg-[#C9A84C33]"
+          style={{
+            fontFamily: "var(--font-cinzel), serif",
+            color: "#C9A84C",
+            fontSize: "0.7rem",
+            letterSpacing: "0.04em",
+            border: "1px solid #C9A84C",
+            padding: "8px 22px",
+            borderRadius: "9999px",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <span
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "35%",
+              height: "100%",
+              background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent)",
+              animation: "cafeShimmer 2.5s linear infinite",
+              pointerEvents: "none",
+            }}
+          />
+          clique ici pour me soutenir🤍🙌✨ - PayPal🤍
+        </a>
+
+        {/* Tooltip */}
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 10px)",
+            left: "50%",
+            transform: "translateX(-50%)",
+            opacity: cafeHovered ? 1 : 0,
+            transition: "opacity 0.2s ease",
+            pointerEvents: "none",
+            whiteSpace: "nowrap",
+            background: "rgba(5,10,30,0.92)",
+            color: "#C9A84C",
+            fontFamily: "var(--font-cinzel), serif",
+            fontSize: "9px",
+            letterSpacing: "0.12em",
+            padding: "5px 12px",
+            borderRadius: "4px",
+            border: "1px solid rgba(201,168,76,0.4)",
+            zIndex: 200,
+          }}
+        >
+          Soutiens le monde de Séviah
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <p
+        className="font-cinzel leading-relaxed"
+        style={{
+          fontFamily: "var(--font-cinzel), serif",
+          color: "rgba(240,244,255,0.4)",
+          fontSize: "0.7rem",
+          letterSpacing: "0.04em",
+        }}
+      >
+        © 2025-2026 By SevIA — Tous droits réservés.
+        <br />
+        Univers féerique original — Créations visuelles, paroles et musiques écrits et composés
+        <br />
+        par Séverine BIRS — By SevIA.
+      </p>
+    </footer>
+  );
+}

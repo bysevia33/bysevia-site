@@ -1,0 +1,4 @@
+{"debug":"Starting connection with timeout of 30000ms","timestamp":"2026-05-02T19:03:59.623Z","sessionId":"66456fef-7739-4aae-8b5d-d8c6ac50d88a","cwd":"/home/bysevia"}
+{"debug":"Successfully connected (transport: stdio) in 2182ms","timestamp":"2026-05-02T19:04:01.801Z","sessionId":"66456fef-7739-4aae-8b5d-d8c6ac50d88a","cwd":"/home/bysevia"}
+{"debug":"Connection established with capabilities: {\"hasTools\":true,\"hasPrompts\":false,\"hasResources\":false,\"hasResourceSubscribe\":false,\"serverVersion\":{\"name\":\"21st-magic\",\"version\":\"0.0.46\"}}","timestamp":"2026-05-02T19:04:01.801Z","sessionId":"66456fef-7739-4aae-8b5d-d8c6ac50d88a","cwd":"/home/bysevia"}
+{"debug":"Channel notifications skipped: server did not declare claude/channel capability","timestamp":"2026-05-02T19:04:01.820Z","sessionId":"66456fef-7739-4aae-8b5d-d8c6ac50d88a","cwd":"/home/bysevia"}
