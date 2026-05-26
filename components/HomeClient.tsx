@@ -39,20 +39,46 @@ function TypewriterPhrase({ content }: { content: string }) {
     return () => clearInterval(id);
   }, []);
 
+  // Group visible chars into segments so words stay intact on wrap
+  type Seg = { kind: "word" | "space" | "newline"; startIdx: number; chars: string[] };
+  const segments: Seg[] = [];
+  let cur: Seg | null = null;
+  chars.slice(0, charCount).forEach((char, idx) => {
+    if (char === "\n") {
+      if (cur) { segments.push(cur); cur = null; }
+      segments.push({ kind: "newline", startIdx: idx, chars: ["\n"] });
+    } else if (char === " ") {
+      if (cur?.kind === "word") { segments.push(cur); cur = null; }
+      if (!cur) cur = { kind: "space", startIdx: idx, chars: [] };
+      cur.chars.push(char);
+    } else {
+      if (cur?.kind === "space") { segments.push(cur); cur = null; }
+      if (!cur) cur = { kind: "word", startIdx: idx, chars: [] };
+      cur.chars.push(char);
+    }
+  });
+  if (cur) segments.push(cur);
+
   return (
     <span>
-      {chars.slice(0, charCount).map((char, i) => {
-        if (char === "\n") return <br key={i} />;
+      {segments.map((seg) => {
+        if (seg.kind === "newline") return <br key={seg.startIdx} />;
+        if (seg.kind === "space")  return <span key={seg.startIdx} style={{ whiteSpace: "pre" }}>{seg.chars.join("")}</span>;
+        // Word container — inline-block keeps the whole word on one line
         return (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 8, scale: 1.35, textShadow: "0 0 14px #FFD700, 0 0 28px #C9A84C" }}
-            animate={{ opacity: 1, y: 0, scale: 1, textShadow: "0 0 0px rgba(255,215,0,0)" }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            style={{ display: "inline-block", whiteSpace: "pre" }}
-          >
-            {char}
-          </motion.span>
+          <span key={seg.startIdx} style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+            {seg.chars.map((char, ci) => (
+              <motion.span
+                key={seg.startIdx + ci}
+                initial={{ opacity: 0, y: 8, scale: 1.35, textShadow: "0 0 14px #FFD700, 0 0 28px #C9A84C" }}
+                animate={{ opacity: 1, y: 0, scale: 1, textShadow: "0 0 0px rgba(255,215,0,0)" }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                style={{ display: "inline" }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
         );
       })}
       <span style={{ opacity: cursorOn ? 1 : 0, color: "#FFD700", marginLeft: "1px" }}>|</span>
@@ -298,8 +324,13 @@ export default function HomeClient() {
   const [showPopup, setShowPopup] = useState(false);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [logoXStart, setLogoXStart] = useState(0);
+  const [maxZoom, setMaxZoom] = useState(1.6);
   const logoRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useLayoutEffect(() => {
+    setMaxZoom(window.innerWidth < 768 ? 1.1 : 1.6);
+  }, []);
 
   useLayoutEffect(() => {
     if (logoRef.current) {
@@ -373,7 +404,7 @@ export default function HomeClient() {
               opacity: [0,          1,          1,          1,          1   ],
               y:       [-220,       0,          0,          0,          0   ],
               x:       [logoXStart, logoXStart, logoXStart, logoXStart, 0   ],
-              scale:   [0.8,        1,          1.6,        1.6,        1   ],
+              scale:   [0.8,        1,          maxZoom,    maxZoom,    1   ],
             }}
             transition={{
               duration: 12.5,
