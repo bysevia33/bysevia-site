@@ -63,7 +63,7 @@ function TypewriterPhrase({ content }: { content: string }) {
     <span>
       {segments.map((seg) => {
         if (seg.kind === "newline") return <br key={seg.startIdx} />;
-        if (seg.kind === "space")  return <span key={seg.startIdx} style={{ whiteSpace: "pre" }}>{seg.chars.join("")}</span>;
+        if (seg.kind === "space")  return <span key={seg.startIdx}>{seg.chars.join("")}</span>;
         // Word container — inline-block keeps the whole word on one line
         return (
           <span key={seg.startIdx} style={{ display: "inline-block", whiteSpace: "nowrap" }}>
