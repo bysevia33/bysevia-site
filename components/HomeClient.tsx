@@ -680,7 +680,7 @@ export default function HomeClient() {
             className="font-cinzel text-sm tracking-wider"
             style={{ fontFamily: "var(--font-cinzel), serif", color: "#C9A84C", opacity: 0.8 }}
           >
-            3 minutes de magie féerique
+            un moment suspendu dans le monde Rose de Seviah 🩷pour découvrir la magie de Lumya et Kaelya 🤍🤍
           </p>
         </motion.div>
 
