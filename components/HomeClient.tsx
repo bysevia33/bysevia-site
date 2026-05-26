@@ -15,7 +15,9 @@ const PHRASES = [
   "Alors, si tu rêves encore…\nAbonne-toi 🙌✨🤍",
 ];
 
-const PHRASE_DURATIONS = [3500, 6500, 5500, 5000, 4500];
+const CHAR_SPEED = 65;
+const READ_TIME = 4000;
+const PHRASE_DURATIONS = PHRASES.map(p => Array.from(p).length * CHAR_SPEED + READ_TIME);
 
 // ─── Typewriter ───────────────────────────────────────────────────────────────
 
@@ -71,9 +73,9 @@ function TypewriterPhrase({ content }: { content: string }) {
             {seg.chars.map((char, ci) => (
               <motion.span
                 key={seg.startIdx + ci}
-                initial={{ opacity: 0, y: 8, scale: 1.35, textShadow: "0 0 14px #FFD700, 0 0 28px #C9A84C" }}
-                animate={{ opacity: 1, y: 0, scale: 1, textShadow: "0 0 0px rgba(255,215,0,0)" }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.12, ease: "easeOut" }}
                 style={{ display: "inline" }}
               >
                 {char}
