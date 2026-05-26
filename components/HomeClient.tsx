@@ -329,7 +329,7 @@ export default function HomeClient() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useLayoutEffect(() => {
-    setMaxZoom(window.innerWidth < 768 ? 1.1 : 1.6);
+    setMaxZoom(window.innerWidth < 768 ? 1.0 : 1.6);
   }, []);
 
   useLayoutEffect(() => {
