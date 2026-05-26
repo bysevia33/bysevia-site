@@ -391,11 +391,11 @@ export default function HomeClient() {
 
       {/* Main Content — colonne mobile / deux colonnes desktop */}
       <div
-        className="relative w-full max-w-6xl px-6 md:px-16 flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between gap-8 md:gap-12"
+        className="relative w-full max-w-6xl px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-12"
         style={{ zIndex: 3 }}
       >
         {/* ── Colonne gauche : Logo + Titre + Sous-titre ── */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left flex-1">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
           {/* Logo */}
           <motion.div
             ref={logoRef}
@@ -449,7 +449,7 @@ export default function HomeClient() {
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.4 } }}
-                className="font-cinzel text-sm md:text-base tracking-wide md:tracking-widest glow-or"
+                className="font-cinzel text-sm md:text-base tracking-widest glow-or"
                 style={{ fontFamily: "var(--font-cinzel), serif", color: "#FFD700", position: "absolute", width: "100%", left: 0 }}
               >
                 <TypewriterPhrase content={PHRASES[phraseIndex]} />
@@ -459,7 +459,7 @@ export default function HomeClient() {
         </div>
 
         {/* ── Colonne droite : Stats ── */}
-        <div className="flex flex-col items-center md:items-end gap-8 flex-shrink-0">
+        <div className="flex flex-col items-center lg:items-end gap-8 flex-shrink-0">
           {/* Stats Counters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
