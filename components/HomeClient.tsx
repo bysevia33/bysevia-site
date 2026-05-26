@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
+import { socialLinks, SocialIcon } from "./SocialLinks";
 
 const PHRASES = [
   "Bienvenue dans les mondes féeriques de Séviah.",
@@ -581,6 +582,16 @@ export default function HomeClient() {
 
       {/* Email Popup */}
       {showPopup && <EmailPopup onClose={() => setShowPopup(false)} />}
+    </div>
+
+    {/* ── Icônes sociales — mobile uniquement ── */}
+    <div
+      className="lg:hidden w-full py-5 px-4 flex flex-wrap items-center justify-center gap-4"
+      style={{ background: "rgba(13,27,62,0.95)", borderBottom: "1px solid rgba(0,180,216,0.15)" }}
+    >
+      {socialLinks.map((s) => (
+        <SocialIcon key={s.label} {...s} size={30} showTooltip />
+      ))}
     </div>
 
     {/* Featured YouTube Video */}

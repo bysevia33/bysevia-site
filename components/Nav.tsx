@@ -122,7 +122,7 @@ export default function Nav() {
                   style={{
                     fontFamily: "var(--font-cinzel), serif",
                     color: "#F0F4FF",
-                    fontSize: "clamp(0.55rem, 1.8vw, 0.7rem)",
+                    fontSize: "clamp(0.65rem, 2.2vw, 0.8rem)",
                     letterSpacing: "0.03em",
                     padding: "4px 1px",
                   }}
