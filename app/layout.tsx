@@ -11,6 +11,7 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bysevia33.com"),
   title: "By SevIA – Créations originales, vidéos & musiques",
   description:
     "Explore les mondes de Seviah : créations visuelles, vidéos et musiques originales de By SevIA.",
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
     title: "By SevIA – Créations originales, vidéos & musiques",
     description:
       "Explore les mondes de Seviah : créations visuelles, vidéos et musiques originales de By SevIA.",
-    url: "https://bysevia-site.vercel.app",
+    url: "https://www.bysevia33.com",
     siteName: "By SevIA",
     images: [
       {
-        url: "/MONDES BYSEVIA/PAYSAGES/Multi_mondes.PNG",
+        url: "https://www.bysevia33.com/MONDES%20BYSEVIA/PAYSAGES/Multi_mondes.PNG",
         width: 1200,
         height: 630,
         alt: "Les mondes féeriques de By SevIA",
@@ -32,11 +33,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "By SevIA – Créations originales, vidéos & musiques",
     description:
       "Explore les mondes de Seviah : créations visuelles, vidéos et musiques originales de By SevIA.",
-    images: ["/MONDES BYSEVIA/PAYSAGES/Multi_mondes.PNG"],
+    images: ["https://www.bysevia33.com/MONDES%20BYSEVIA/PAYSAGES/Multi_mondes.PNG"],
   },
 };
 
