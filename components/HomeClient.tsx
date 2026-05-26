@@ -391,7 +391,7 @@ export default function HomeClient() {
 
       {/* Main Content — colonne mobile / deux colonnes desktop */}
       <div
-        className="relative w-full max-w-6xl px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-12"
+        className="relative w-full max-w-6xl px-6 lg:px-16 flex flex-col lg:flex-row items-stretch lg:items-center justify-center lg:justify-between gap-8 lg:gap-12"
         style={{ zIndex: 3 }}
       >
         {/* ── Colonne gauche : Logo + Titre + Sous-titre ── */}
