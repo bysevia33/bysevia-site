@@ -16,7 +16,7 @@ const PHRASES = [
 ];
 
 const CHAR_SPEED = 65;
-const READ_TIME = 4000;
+const READ_TIME = 2000;
 const PHRASE_DURATIONS = PHRASES.map(p => Array.from(p).length * CHAR_SPEED + READ_TIME);
 
 // ─── Typewriter ───────────────────────────────────────────────────────────────
@@ -24,7 +24,6 @@ const PHRASE_DURATIONS = PHRASES.map(p => Array.from(p).length * CHAR_SPEED + RE
 function TypewriterPhrase({ content }: { content: string }) {
   const chars = Array.from(content);
   const [charCount, setCharCount] = useState(0);
-  const [cursorOn, setCursorOn] = useState(true);
 
   useEffect(() => {
     setCharCount(0);
@@ -32,15 +31,10 @@ function TypewriterPhrase({ content }: { content: string }) {
     const id = setInterval(() => {
       if (i < chars.length) { i++; setCharCount(i); }
       else clearInterval(id);
-    }, 60);
+    }, CHAR_SPEED);
     return () => clearInterval(id);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [content]);
-
-  useEffect(() => {
-    const id = setInterval(() => setCursorOn(v => !v), 500);
-    return () => clearInterval(id);
-  }, []);
 
   // Group visible chars into segments so words stay intact on wrap
   type Seg = { kind: "word" | "space" | "newline"; startIdx: number; chars: string[] };
@@ -84,7 +78,6 @@ function TypewriterPhrase({ content }: { content: string }) {
           </span>
         );
       })}
-      <span style={{ opacity: cursorOn ? 1 : 0, color: "#FFD700", marginLeft: "1px" }}>|</span>
     </span>
   );
 }
@@ -453,7 +446,7 @@ export default function HomeClient() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.4 } }}
                 className="font-cinzel text-sm md:text-base tracking-widest glow-or"
-                style={{ fontFamily: "var(--font-cinzel), serif", color: "#FFD700", position: "absolute", width: "100%", left: 0 }}
+                style={{ fontFamily: "var(--font-cinzel), serif", color: "#FFD700", position: "absolute", width: "100%", left: 0, textAlign: "left" }}
               >
                 <TypewriterPhrase content={PHRASES[phraseIndex]} />
               </motion.p>
