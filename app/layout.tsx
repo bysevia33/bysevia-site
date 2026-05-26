@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "By SevIA",
     images: [
       {
-        url: "https://www.bysevia33.com/MONDES%20BYSEVIA/PAYSAGES/Multi_mondes.PNG",
+        url: "https://www.bysevia33.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Les mondes féeriques de By SevIA",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "By SevIA – Créations originales, vidéos & musiques",
     description:
       "Explore les mondes de Seviah : créations visuelles, vidéos et musiques originales de By SevIA.",
-    images: ["https://www.bysevia33.com/MONDES%20BYSEVIA/PAYSAGES/Multi_mondes.PNG"],
+    images: ["https://www.bysevia33.com/opengraph-image"],
   },
 };
 
