@@ -497,6 +497,18 @@ export default function HomeClient() {
               <span className="text-xs tracking-widest opacity-70" style={{ color: "#F0F4FF" }}>ABONNÉS</span>
             </div>
           </motion.div>
+
+          {/* Icônes sociales — mobile uniquement */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
+            className="lg:hidden flex flex-wrap justify-center gap-3"
+          >
+            {socialLinks.map((s) => (
+              <SocialIcon key={s.label} {...s} size={26} showTooltip />
+            ))}
+          </motion.div>
         </div>
       </div>
 
@@ -582,16 +594,6 @@ export default function HomeClient() {
 
       {/* Email Popup */}
       {showPopup && <EmailPopup onClose={() => setShowPopup(false)} />}
-    </div>
-
-    {/* ── Icônes sociales — mobile uniquement ── */}
-    <div
-      className="lg:hidden w-full py-5 px-4 flex flex-wrap items-center justify-center gap-4"
-      style={{ background: "rgba(13,27,62,0.95)", borderBottom: "1px solid rgba(0,180,216,0.15)" }}
-    >
-      {socialLinks.map((s) => (
-        <SocialIcon key={s.label} {...s} size={30} showTooltip />
-      ))}
     </div>
 
     {/* Featured YouTube Video */}
