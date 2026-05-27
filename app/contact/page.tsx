@@ -290,13 +290,23 @@ function ContactForm() {
     sujet: "Collaboration",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(
-      "✨ Merci pour ton message ! Les étoiles de l'univers By SevIA t'ont entendu. Une réponse féerique t'arrivera bientôt !"
-    );
-    setForm({ nom: "", email: "", sujet: "Collaboration", message: "" });
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setForm({ nom: "", email: "", sujet: "Collaboration", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -397,7 +407,8 @@ function ContactForm() {
 
         <button
           type="submit"
-          className="btn-or mt-2 py-4 rounded-full font-cinzel font-bold tracking-widest text-sm transition-all hover:scale-105"
+          disabled={status === "sending"}
+          className="btn-or mt-2 py-4 rounded-full font-cinzel font-bold tracking-widest text-sm transition-all hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
           style={{
             fontFamily: "var(--font-cinzel), serif",
             background: "linear-gradient(135deg, #C9A84C, #E8A0BF)",
@@ -405,8 +416,19 @@ function ContactForm() {
             border: "none",
           }}
         >
-          ENVOYER ✨
+          {status === "sending" ? "ENVOI EN COURS..." : "ENVOYER ✨"}
         </button>
+
+        {status === "success" && (
+          <p className="text-center text-sm mt-2" style={{ color: "#4CAF50" }}>
+            ✨ Message envoyé ! Une réponse féerique t&apos;arrivera bientôt. 💙
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-center text-sm mt-2" style={{ color: "#E8A0BF" }}>
+            Une erreur s&apos;est produite. Merci de réessayer ou d&apos;écrire à severinebirs@hotmail.com
+          </p>
+        )}
       </form>
     </div>
   );
