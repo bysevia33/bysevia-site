@@ -3,6 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req: NextRequest) {
   const { nom, email, sujet, message } = await req.json();
 
+  console.log('[contact] reçu :', { nom, email, sujet });
+  console.log('[contact] BREVO_API_KEY présente :', !!process.env.BREVO_API_KEY);
+
   if (!nom || !email || !message) {
     return NextResponse.json({ error: 'Champs requis manquants' }, { status: 400 });
   }
@@ -33,8 +36,10 @@ export async function POST(req: NextRequest) {
 
   if (!res.ok) {
     const err = await res.text();
+    console.log('[contact] Brevo erreur', res.status, err);
     return NextResponse.json({ error: err }, { status: 500 });
   }
 
+  console.log('[contact] Brevo OK', res.status);
   return NextResponse.json({ ok: true });
 }
