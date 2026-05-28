@@ -380,9 +380,12 @@ function ContactForm() {
             className="rounded-lg p-3 text-sm outline-none w-full"
             style={{ ...inputStyle, cursor: "pointer" }}
           >
-            <option value="Collaboration">Collaboration</option>
-            <option value="Presse">Presse</option>
-            <option value="Booking">Booking</option>
+            <option value="Demande de collaboration">Demande de collaboration</option>
+            <option value="Création vidéo">Création vidéo</option>
+            <option value="Création musicale">Création musicale</option>
+            <option value="Achat NFT">Achat NFT</option>
+            <option value="Achat Peintures">Achat Peintures</option>
+            <option value="Presse &amp; Interview">Presse &amp; Interview</option>
             <option value="Autre">Autre</option>
           </select>
         </div>
