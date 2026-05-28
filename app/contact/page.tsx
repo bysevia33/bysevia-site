@@ -426,7 +426,7 @@ function ContactForm() {
         )}
         {status === "error" && (
           <p className="text-center text-sm mt-2" style={{ color: "#E8A0BF" }}>
-            Une erreur s&apos;est produite. Merci de réessayer ou d&apos;écrire à severinebirs@hotmail.com
+            Une erreur s&apos;est produite. Merci de réessayer ou d&apos;écrire à bysevia33@gmail.com
           </p>
         )}
       </form>
