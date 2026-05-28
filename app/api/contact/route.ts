@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       subject: `[By SevIA] ${sujet} — ${nom}`,
       htmlContent: `
         <div style="font-family:sans-serif;max-width:600px;margin:auto">
-          <h2 style="color:#00B4D8">Nouveau message — By SevIA</h2>
+          <h2 style="color:#0D1B3E">Formulaire contact site – By SevIA</h2>
           <p><strong>Nom :</strong> ${nom}</p>
           <p><strong>Email :</strong> ${email}</p>
           <p><strong>Sujet :</strong> ${sujet}</p>
