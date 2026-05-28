@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       'api-key': process.env.BREVO_API_KEY!,
     },
     body: JSON.stringify({
-      sender: { name: 'By SevIA - Contact', email: 'sevmyway@hotmail.com' },
+      sender: { name: 'By SevIA - Contact', email: 'bysevia33@gmail.com' },
       to: [{ email: 'bysevia33@gmail.com', name: 'Séverine BIRS' }],
       replyTo: { email, name: nom },
       subject: `[By SevIA] ${sujet} — ${nom}`,
