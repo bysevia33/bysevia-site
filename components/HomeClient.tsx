@@ -325,15 +325,20 @@ export default function HomeClient() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useLayoutEffect(() => {
-    setMaxZoom(window.innerWidth < 768 ? 1.0 : 1.6);
-  }, []);
-
-  useLayoutEffect(() => {
     if (logoRef.current) {
       const rect = logoRef.current.getBoundingClientRect();
       const logoCenter = rect.left + rect.width / 2;
       const screenCenter = window.innerWidth / 2;
       setLogoXStart(Math.round(screenCenter - logoCenter));
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        setMaxZoom(1.0);
+      } else {
+        const NAV_HEIGHT = 56;
+        const logoCenterY = rect.top + rect.height / 2;
+        const safeScale = ((logoCenterY - NAV_HEIGHT) * 2) / rect.height;
+        setMaxZoom(Math.min(1.4, Math.max(1.0, safeScale * 0.85)));
+      }
     }
   }, []);
 
