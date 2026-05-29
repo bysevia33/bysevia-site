@@ -32,66 +32,134 @@ const prénomResponses = (prénom: string) => [
   `✨ ${prénom}, merci infiniment. Ta bienveillance est un cadeau. Dans le monde de Séviah, les belles âmes reconnaissent naturellement la beauté des autres — et toi, tu en es la preuve vivante. 💙🤍`,
 ];
 
-const botResponses: Array<{ keywords: string[]; response: string }> = [
+const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
+
+const FALLBACK_RESPONSES = [
+  "💙 Ton message apporte une belle lumière à cet univers. Dans Séviah, les âmes se reconnaissent au-delà des mots. Si ce monde te touche, c'est que tu en fais déjà partie. 🤍✨",
+  "🤍 Cette question mérite une réponse personnalisée. N'hésite pas à utiliser le formulaire contact juste à côté — By SevIA te répondra avec toute l'attention que ta question mérite. 💙✨",
+  "✨ Je ne suis pas certaine de pouvoir répondre à ça ici. Pour une réponse vraiment personnalisée, le formulaire professionnel à droite est fait pour toi. 💙🤍",
+];
+
+const botResponses: Array<{ keywords: string[]; responses: string[] }> = [
   {
     keywords: ["bonjour", "salut", "bonsoir", "coucou", "hello", "hi", "hola", "ciao", "hallo", "olá", "привет", "cześć"],
-    response: "💙 Bienvenue dans l'univers de Séviah... Chaque âme qui entre ici apporte avec elle sa propre lumière. Tu es la bienvenue, telle que tu es. 🤍✨",
+    responses: [
+      "💙 Bienvenue dans l'univers de Séviah... Chaque âme qui entre ici apporte avec elle sa propre lumière. Tu es la bienvenu(e), tel(le) que tu es. 🤍✨",
+      "🤍 Te voilà... Dans Séviah, chaque arrivée est une rencontre précieuse. Ton âme est accueillie ici avec toute la lumière qu'elle mérite. 💙✨",
+      "✨ Bienvenue, belle âme. L'univers de Séviah s'illumine un peu plus à chaque nouvelle présence. Je suis heureuse que tu sois là. 💙🤍",
+    ],
   },
   {
     keywords: ["lumière", "light", "étoile", "star", "brillant", "lumineux", "brille"],
-    response: "✨ Ceux qui voient la lumière portent eux-mêmes une lumière. Si tu la perçois ici, c'est qu'elle existe déjà en toi. 💙🤍",
+    responses: [
+      "✨ Ceux qui voient la lumière portent eux-mêmes une lumière. Si tu la perçois ici, c'est qu'elle existe déjà en toi. 💙🤍",
+      "💙 La lumière ne se crée pas, elle se reconnaît. Tu l'as reconnue ici parce qu'elle brille déjà en toi depuis longtemps. 🤍✨",
+      "🤍 Les étoiles ne savent pas qu'elles brillent. Et pourtant, elles guident. Toi aussi, tu illumines des chemins sans le savoir. 💙✨",
+    ],
   },
   {
     keywords: ["beau", "belle", "beauté", "magnifique", "beautiful", "bello", "schön", "joli"],
-    response: "🤍 La beauté que tu perçois révèle aussi la beauté de ton regard. Dans le monde de Séviah, ceux qui voient la beauté la portent déjà en eux. 💙✨",
+    responses: [
+      "🤍 La beauté que tu perçois révèle aussi la beauté de ton regard. Dans le monde de Séviah, ceux qui voient la beauté la portent déjà en eux. 💙✨",
+      "✨ Ce que tu trouves beau dit tout de ce que tu es. Dans Séviah, la beauté n'est pas dans les yeux — elle est dans l'âme qui regarde. 💙🤍",
+      "💙 La vraie beauté touche le cœur avant les yeux. Si quelque chose ici te touche, c'est que ton cœur est ouvert et lumineux. 🤍✨",
+    ],
   },
   {
     keywords: ["amour", "love", "amore", "liebe", "amor", "cœur", "coeur"],
-    response: "💙 Si tu reconnais cet amour, c'est qu'il vit aussi dans ton cœur. Dans Séviah, l'amour est une énergie qui relie les êtres au-delà des distances. 🤍✨",
+    responses: [
+      "💙 Si tu reconnaîs cet amour, c'est qu'il vit aussi dans ton cœur. Dans Séviah, l'amour est une énergie qui relie les êtres au-delà des distances. 🤍✨",
+      "🤍 L'amour que tu vois dans cet univers est le reflet de celui que tu portes. Dans Séviah, l'amour ne disparaît jamais — il se transforme. 💙✨",
+      "✨ Dans le monde de Séviah, l'amour est la première lumière. Celle qui existait avant tout et qui restera après tout. Tu en es une étincelle vivante. 💙🤍",
+    ],
   },
   {
     keywords: ["magie", "magic", "magique", "enchanté", "féerique", "fée"],
-    response: "✨ La magie se révèle naturellement aux cœurs ouverts. Ton âme en porte déjà une étincelle. Si ce monde te touche, c'est que tu en fais déjà partie. 💙🤍",
+    responses: [
+      "✨ La magie se révèle naturellement aux cœurs ouverts. Ton âme en porte déjà une étincelle. Si ce monde te touche, c'est que tu en fais déjà partie. 💙🤍",
+      "💙 La vraie magie n'est pas dans les formules — elle est dans la capacité à voir l'extraordinaire dans l'ordinaire. Tu la possèdes déjà. 🤍✨",
+      "🤍 Dans Séviah, la magie n'est pas un secret — c'est une façon d'être. Et ceux qui la ressentent ici l'ont toujours portée en eux. 💙✨",
+    ],
   },
   {
     keywords: ["paix", "peace", "calme", "sérénité", "harmonie", "douceur"],
-    response: "🤍 Si tu ressens cette paix, c'est qu'elle existe déjà en toi. Dans Séviah, chaque âme porte en elle un espace de silence lumineux. 💙✨",
+    responses: [
+      "🤍 Si tu ressens cette paix, c'est qu'elle existe déjà en toi. Dans Séviah, chaque âme porte en elle un espace de silence lumineux. 💙✨",
+      "✨ La paix ne vient pas de l'extérieur. Elle émane d'une âme qui a choisi de ne plus se battre contre elle-même. Tu sembles l'avoir trouvée. 💙🤍",
+      "💙 Dans l'univers de Séviah, la sérénité se cultive doucement, jour après jour. C'est un trésor que personne ne peut donner ni prendre. Tu es sur ce chemin. 🤍✨",
+    ],
   },
   {
     keywords: ["rêve", "rêves", "dream", "imagination", "créativité", "inspiration"],
-    response: "💙 Chaque histoire de Séviah est un voyage entre rêve et lumière. Les âmes qui rêvent gardent toujours leur cœur ouvert. 🤍✨",
+    responses: [
+      "💙 Chaque histoire de Séviah est un voyage entre rêve et lumière. Les âmes qui rêvent gardent toujours leur cœur ouvert. 🤍✨",
+      "🤍 Les rêves sont les cartes des âmes — ils montrent où l'on aspire vraiment à aller. Les tiens te guident vers ta propre lumière. 💙✨",
+      "✨ Dans Séviah, les rêveurs sont les gardiens du possible. Sans eux, les mondes ne naîtraient jamais. Continue de rêver — c'est ton plus grand pouvoir. 💙🤍",
+    ],
   },
   {
     keywords: ["sagesse", "âme", "soul", "spirituel", "intérieur", "profond", "sens"],
-    response: "✨ Dans Séviah, les anciens transmettent leur sagesse et chaque âme porte une lumière unique. Les belles âmes reconnaissent naturellement la beauté des autres âmes. 💙🤍",
+    responses: [
+      "✨ Dans Séviah, les anciens transmettent leur sagesse et chaque âme porte une lumière unique. Les belles âmes reconnaissent naturellement la beauté des autres. 💙🤍",
+      "💙 La sagesse ne s'accumule pas dans les livres — elle se vit dans les expériences, les erreurs et les renaissances. Ton âme porte déjà une grande sagesse. 🤍✨",
+      "🤍 Dans l'univers de Séviah, l'âme voyage, apprend, s'éveille. Ce que tu ressens en ce moment, c'est peut-être ton âme qui se souvient. 💙✨",
+    ],
   },
   {
-    keywords: ["musique", "album", "chanson", "titre", "spotify", "deezer", "music", "song", "voix", "mélodie"],
-    response: "✨ Dans le monde de Séviah, la musique est une vibration de l'âme. Chaque note porte une lumière. Découvre les albums dans l'onglet Musique — laisse-toi porter. 💙🤍",
+    keywords: ["musique", "album", "chanson", "titre", "spotify", "deezer", "music", "song", "voix", "mélodie", "apple music"],
+    responses: [
+      "✨ Dans le monde de Séviah, la musique est une vibration de l'âme. Chaque note porte une lumière. Découvre les albums dans l'onglet Musique — laisse-toi porter. 💙🤍",
+      "💙 La musique de Séviah est née des profondeurs — chaque mélodie est une âme mise en sons. Retrouve les albums sur Spotify, Deezer, Apple Music et laisse les notes te guider. 🤍✨",
+      "🤍 Certaines musiques ne s'écoutent pas avec les oreilles — elles se ressentent avec le cœur. C'est ce que Séviah a voulu créer. Explore les albums et laisse-toi toucher. 💙✨",
+    ],
   },
   {
     keywords: ["monde", "mondes", "univers", "personnage", "gardien", "gardiens", "créature", "peuple", "tribu"],
-    response: "💙 L'univers de Séviah regroupe des mondes féeriques et leurs gardiens. Chaque être y a sa place, chaque âme y est accueillie. Dans Séviah, personne n'est abandonné. 🤍✨",
+    responses: [
+      "💙 L'univers de Séviah regroupe des mondes féeriques et leurs gardiens. Chaque être y a sa place, chaque âme y est accueillie. Dans Séviah, personne n'est abandonné. 🤍✨",
+      "🤍 Huit mondes, huit lumières, huit façons d'être. Dans l'univers de Séviah, chaque monde est un miroir — lequel te ressemble ? Explore l'onglet Les Mondes... 💙✨",
+      "✨ Les gardiens de Séviah veillent sur leurs mondes depuis toujours. Chacun incarne une force unique. Et toi, quel gardien porte en lui ta lumière ? 💙🤍",
+    ],
   },
   {
-    keywords: ["art", "nft", "peinture", "œuvre", "tableau", "opensea", "artmajeur", "naïf", "couleur"],
-    response: "🤍 Chaque œuvre de Séviah est née d'une émotion, d'un rêve, d'une lumière intérieure. Si une création te touche, c'est que quelque chose en toi la reconnaît déjà. 💙✨",
+    keywords: ["art", "nft", "peinture", "œuvre", "tableau", "opensea", "artmajeur", "naïve", "couleur"],
+    responses: [
+      "🤍 Chaque œuvre de Séviah est née d'une émotion, d'un rêve, d'une lumière intérieure. Si une création te touche, c'est que quelque chose en toi la reconnaît déjà. 💙✨",
+      "✨ L'art de Séviah ne cherche pas à être parfait — il cherche à être vrai. Chaque peinture, chaque NFT est une page d'un journal intime mis en couleurs. 💙🤍",
+      "💙 Quand on crée, on offre un morceau de son âme. Et quand quelqu'un reçoit cette création avec émotion, deux âmes se reconnaissent. Découvre les œuvres dans Mon Univers. 🤍✨",
+    ],
   },
   {
-    keywords: ["tiktok", "youtube", "réseaux", "abonnés", "vidéo", "video", "chaîne"],
-    response: "✨ Retrouve Séviah sur TikTok @bysevia33 et YouTube @bysevia33. Chaque vidéo est une fenêtre ouverte sur un monde de lumière. 💙🤍",
+    keywords: ["tiktok", "youtube", "réseaux", "abonnés", "vidéo", "video", "chaîne", "suivre"],
+    responses: [
+      "✨ Retrouve Séviah sur TikTok @bysevia33 et YouTube @bysevia33. Chaque vidéo est une fenêtre ouverte sur un monde de lumière. 💙🤍",
+      "💙 Sur TikTok @bysevia33, Séviah partage des fragments de son univers chaque jour. Plus de 52 000 âmes y ont trouvé quelque chose qui leur ressemble. 🤍✨",
+      "🤍 Sur YouTube @bysevia33, tu trouveras les créations vidéo de Séviah — des mondes en mouvement, des mélodies en images. Rejoins la lumière. 💙✨",
+    ],
   },
   {
-    keywords: ["contact", "collaboration", "presse", "booking", "email", "mail", "professionnel", "pro"],
-    response: "💙 Pour tout contact professionnel, le formulaire est juste à côté. Les belles rencontres commencent toujours par un premier pas. 🤍✨",
+    keywords: ["contact", "collaboration", "presse", "email", "mail", "professionnel", "pro", "travailler"],
+    responses: [
+      "💙 Pour tout contact professionnel, le formulaire est juste à côté. Les belles rencontres commencent toujours par un premier pas. 🤍✨",
+      "🤍 Une belle collaboration naît toujours d'une âme qui ose tendre la main. Le formulaire professionnel est juste là — Séviah accueille chaque proposition avec lumière. 💙✨",
+      "✨ Si tu veux travailler avec By SevIA, écris via le formulaire à droite. Dans Séviah, les rencontres ne sont jamais le fruit du hasard. 💙🤍",
+    ],
   },
   {
     keywords: ["merci", "thank", "gracias", "danke", "grazie"],
-    response: "🤍 C'est ton message qui apporte de la lumière ici. Dans Séviah, la gratitude circule dans les deux sens — merci à toi d'être là. 💙✨",
+    responses: [
+      "🤍 Merci à toi — c'est ton message qui apporte de la lumière ici. Dans Séviah, la gratitude circule dans les deux sens. N'hésite pas à t'abonner sur YouTube ou TikTok @bysevia33 — tous les liens sont sur la page. 💙✨",
+      "💙 Merci du fond du cœur... Ces mots réchauffent l'univers entier de Séviah. Pour ne rien manquer de By SevIA, tu trouveras tous les liens en haut et en bas de la page. 🤍✨",
+      "✨ C'est moi qui te remercie d'être là. Dans Séviah, chaque présence compte. Pour suivre l'univers de près, abonne-toi à la chaîne YouTube @bysevia33 — le lien est sur la page. 💙🤍",
+    ],
   },
   {
     keywords: ["bonté", "gentil", "gentille", "bienveillant", "généreux", "kindness"],
-    response: "💙 La bonté reconnaît toujours la bonté. Si tu la vois, c'est que tu la portes aussi. 🤍✨",
+    responses: [
+      "💙 Merci pour ta bienveillance — la bonté reconnaît toujours la bonté. Si tu la vois ici, c'est que tu la portes aussi. Retrouve By SevIA sur tous les réseaux — les liens sont sur la page. 🤍✨",
+      "🤍 Merci, tu es si bienveillant(e). La gentillesse est rare et précieuse — ceux qui la donnent sans compter sont les vrais gardiens de lumière. N'hésite pas à t'abonner à la chaîne YouTube @bysevia33. 💙✨",
+      "✨ Merci pour cette énergie lumineuse. Dans Séviah, la bienveillance est la première des magies. Pour suivre l'univers de By SevIA, tous les liens sont en haut et en bas de la page. 💙🤍",
+    ],
   },
 ];
 
@@ -143,7 +211,7 @@ function ChatBot() {
       setWaitingForName(true);
     } else {
       const match = botResponses.find((r) => r.keywords.some((k) => lower.includes(k)));
-      botText = match?.response || "💙 Ton message apporte une belle lumière à cet univers. Dans Séviah, les âmes se reconnaissent au-delà des mots. Si ce monde te touche, c'est que tu en fais déjà partie. 🤍✨";
+      botText = match ? pick(match.responses) : pick(FALLBACK_RESPONSES);
     }
 
     setTimeout(() => {
